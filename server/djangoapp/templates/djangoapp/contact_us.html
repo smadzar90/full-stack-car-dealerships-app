@@ -3,28 +3,28 @@
 <head>
     <style>
         .ad-container {
-            
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            border-radius: 20px;
         }
     </style>
-
     {% include 'djangoapp/partials/head.html' %}
 </head>
 <body>
     {% include 'djangoapp/partials/nav.html' %}
     <div class="container">
         <div class="row">
-            <div class="col mt-5 border ad-container">
-                <address class="ml-3 mt-5">
-                    <strong>Example Inc.</strong><br>
-                    1234 Example Street<br>
-                    Antartica, Example 0987<br>
-                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                </address>
-                  
-                <address class="ml-3 mb-5">
-                    <strong>Full Name</strong><br>
-                    <a href="mailto:#">exam.ple@example.com</a>
-                </address>
+            <div class="col mt-5 ad-container">
+                <div class="ml-3 mt-5">
+                    <strong>Best Cars</strong><br>
+                    <p>36 BestCars Street<br>
+                    Texas, 74502<br>
+                    (123) 456-7890</p>
+                </div>
+                <div class="ml-3 mb-5">
+                    <p>Email: 
+                        <a href="mailto:best_cars@gmail.com">best_cars@gmail.com</a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
