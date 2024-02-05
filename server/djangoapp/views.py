@@ -10,22 +10,18 @@ from datetime import datetime
 import logging
 import json
 
-# Get an instance of a logger
 logger = logging.getLogger(__name__)
 
 
 # Create your views here.
 
-def get_new_page(request):
-    return render(request, 'djangoapp/new_page.html')
-
 def about(request):
      context = { 'title': 'About Us' }
      return render(request, 'djangoapp/about.html', context)
 
-
-# Create a `contact` view to return a static contact page
-#def contact(request):
+def contact(request):
+    context = { 'title': 'Contact Us' }
+    return render(request, 'djangoapp/contact_us.html', context)
 
 # Create a `login_request` view to handle sign in request
 # def login_request(request):

@@ -8,9 +8,43 @@
         {% include 'djangoapp/partials/nav.html' %}
 
         <div class="container mt-5">
-            <h2 class="mb-2">About Us</h2>
-            <p>Welcome to Best Cars dealership, home to the best cars in North America. We sell domestic and imported cars at reasonable prices.</p>
+            <h2 class="mb-4">About Us</h2>
+            <p>Welcome to Best Cars dealership, home to the best cars in North America. We sell domestic 
+                and imported cars at reasonable prices.</p>
+
+            <p>Embark on a seamless and rewarding automotive journey with Best Cars, where our commitment to 
+                excellence goes beyond the ordinary. We take immense pride in our meticulously curated selection of 
+                domestic and imported vehicles, each designed to surpass the highest standards of quality and 
+                performance.</p>
+            
+            <p>With the Best Cars Review Platform, you have the ability to explore different branches based on your 
+                state of interest. Dive into a comprehensive database of customer reviews that offer valuable insights 
+                into the experiences of others. We believe in the power of firsthand experiences, and your voice matters.</p>
+
+            <p>As a trusted name in the automotive industry, we are committed to providing more than 
+                just a transaction, we aim to deliver an unparalleled car-buying journey. Our team is 
+                dedicated to ensuring transparency, trust, and satisfaction for every customer.</p>
+
+            <p>Explore our showroom, where reasonable prices meet exceptional automobiles. Whether you 
+                are seeking domestic reliability or the allure of imported luxury, Best Cars is your 
+                gateway to a world of automotive excellence.</p>
+
+            <p>Thank you for entrusting Best Cars with your automotive aspirations. 
+                Your journey to discovering the best in North American automotive experiences 
+                begins here, where every mile is a testament to our unwavering dedication to 
+                quality and customer satisfaction.</p>
+            
+            <button type="button" class="btn btn-primary mt-3 mb-3" id="myButton">Contact Us</button>
+
         </div>
+
+        <script>
+            myButton = document.getElementById("myButton");
+
+            myButton.addEventListener("click", function() {
+                window.location.href = "/djangoapp/contact-us";
+            });
+        </script>
     </body>
 
 </html>
