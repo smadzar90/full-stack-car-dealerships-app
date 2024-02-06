@@ -18,13 +18,11 @@ urlpatterns = [
     # path for login
 
     # path for logout
-
     path(route='this', view=views.get_dealerships, name='index'),
     path(route='about', view=views.about, name='about'),
     path(route='contact-us', view=views.contact, name='contact'),
-
-    # path for dealer reviews view
-
-    # path for add a review view
+    path(route='user-login', view=views.login_request, name='login'),
+    path(route='user-logout', view=views.logout_request, name='logout'),
+    path(route='register', view=views.registration_request, name='register'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,20 +1,49 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light border">
-    <a class="navbar-brand ml-3" href="/djangoapp/this">Best Cars</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav_bar"
-            aria-controls="nav_bar" aria-expanded="false" aria-label="Toggle navigation">
+<style>
+    @media (max-width: 992px) {
+        .navbar-brand {
+            margin: 0px !important;
+        }
+
+        .last-li {
+            margin-bottom: 1rem;
+        }
+    }
+
+    .form {
+        display: flex;
+        gap: 0.75rem; 
+    }
+</style>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand mr-5 ml-3" href="#">Best Cars</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="nav_bar">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item active mr-3">
-                <a class="nav-link" href="#">Example<span class="sr-only">(current)</span></a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active mr-2">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item mr-3">
-                <a class="nav-link" href="#">Example</a>
+            <li class="nav-item mr-2">
+                <a class="nav-link" href="#">Link</a>
             </li>
-            <li class="nav-item mr-3">
-                <a class="nav-link" href="#">Example</a>
+            <li class="nav-item mr-2 last-li">
+                <a class="nav-link" href="#">Link</a>
             </li>
         </ul>
+        {% if user.is_authenticated %}
+            <a class="btn btn-link" href="">{{ user.first_name }}({{ user.username }})</a>
+            <a class="btn btn-link" href="{% url 'djangoapp:logout' %}">Logout</a>
+        {% else %}
+        <form class="form-inline form" action="user-login" method="post">
+            {% csrf_token %}
+            <input class="form-control" type="text" placeholder="Username" name="username">
+            <input class="form-control" type="password" placeholder="Password" name="password">
+            <button class="btn btn-outline-primary" type="submit">Login</button>
+            <a class="btn btn-link" href="{% url 'djangoapp:register' %}">Sign In</a>
+        </form>
+        {% endif %}
     </div>
 </nav>
