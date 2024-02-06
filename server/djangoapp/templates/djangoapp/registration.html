@@ -12,25 +12,32 @@
         {% include 'djangoapp/partials/nav.html' %}
         <div class="container register" style="max-width:600px;">
             <h3 class="mb-4">Sign In</h3>
-            <form>
+            <form action="register" method="post">
                 <div class="form-group">
                     <label for="user_name">User name</label>
-                    <input type="text" class="form-control" name="username" placeholder="Enter user name">
+                    <input type="text" class="form-control" name="username" placeholder="Enter user name" required>
                 </div>
+                <div class=mt-2>
+                    Please enter a message in the textarea.
+                  </div>
                 <div class="form-group">
                     <label for="first_name">First name</label>
-                    <input type="text" class="form-control" name="firstname" placeholder="Enter first name">
+                    <input type="text" class="form-control" name="firstname" placeholder="Enter first name" required>
                 </div>
                 <div class="form-group">
                     <label for="last_name">Last name</label>
-                    <input type="text" class="form-control" name="lastname" placeholder="Enter last name">
+                    <input type="text" class="form-control" name="lastname" placeholder="Enter last name" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="Password">
+                    <input type="password" class="form-control" name="password" placeholder="Password" required>
                 </div>
                 <button type="submit" class="btn btn-primary mt-3 mb-5">Submit</button>
             </form>
+
+            {% if user_exists %}
+        <p>Error: {{ error }}</p>
+    {% endif %}
         </div>
     </body>
 </html>

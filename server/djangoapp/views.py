@@ -12,9 +12,6 @@ import json
 
 logger = logging.getLogger(__name__)
 
-
-# Create your views here.
-
 def about(request):
      context = { 'title': 'About Us' }
      return render(request, 'djangoapp/about.html', context)
@@ -43,11 +40,34 @@ def logout_request(request):
 
 def registration_request(request):
 
-    if request.method == 'POST':
-        return redirect('djangoapp:about')
-    
     context = { 'title': 'Registration' }
+
+    if request.method == 'POST':
+
+        user_name = request.POST.get('username')
+        first_name = request.POST.get('firstname')  
+        last_name = request.POST.get('lastname')
+        pwd = request.POST.get('password')
+
+        user_exist = False
+
+        try:
+            User.objects.get(username=user_name)
+            user_exist = True
+        except:
+            pass
+        
+        if not user_exist:
+
+            user = User.objects.create_user(username=user_name, password=pwd, first_name=first_name, last_name=last_name)
+            login(request, user)
+            return redirect('djangoapp:about')
+            
+        context['user_exists'] = 'User already exist. Try again!'
+        
     return render(request, 'djangoapp/registration.html', context)
+
+
 
 # Update the `get_dealerships` view to render the index page with a list of dealerships
 def get_dealerships(request):
