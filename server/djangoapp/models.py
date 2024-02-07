@@ -57,7 +57,7 @@ class DealerReview:
         self.car_year = review.get('car_year')
         self.another = review.get('another')
         self.sentiment = review.get('sentiment')
-    
+        
     def __str__(self):
         return self.name + ', ' + self.review
 
