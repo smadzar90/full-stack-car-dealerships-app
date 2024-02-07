@@ -3,6 +3,7 @@ from cloudant.query import Query
 from flask import Flask, jsonify, request
 import atexit
 
+
 #Add your Cloudant service credentials here
 cloudant_username = '7422baae-6c44-4421-b623-3f102f8da609-bluemix'
 cloudant_api_key = 'ewGwrRie9LjB-kT6jEzJRtpMn14CaWzytHztRmFWHt1v'
@@ -19,7 +20,6 @@ app = Flask(__name__)
 @app.route('/api/get_reviews', methods=['GET'])
 def get_reviews():
     dealership_id = request.args.get('id')
-
     # Check if "id" parameter is missing
     if dealership_id is None:
         return jsonify({"error": "Missing 'id' parameter in the URL"}), 400
