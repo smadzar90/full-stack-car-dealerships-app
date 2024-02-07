@@ -2,7 +2,12 @@ import requests
 import json
 from .models import CarDealer, DealerReview
 from requests.auth import HTTPBasicAuth
+import json
+from ibm_watson import NaturalLanguageUnderstandingV1
+from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+from ibm_watson.natural_language_understanding_v1 import Features, SentimentOptions
 
+#Send a get request to a specified url
 def get_request(url, **kwargs):
     print("GET from {} ".format(url))
     try:
@@ -23,6 +28,7 @@ def get_request(url, **kwargs):
     json_data = json.loads(response.text)
     return json_data
 
+#Return a list of dealer objects
 def get_dealers_from_cf(url, **kwargs):
     results = []
     # Call get_request with a URL parameter
@@ -43,16 +49,16 @@ def get_dealers_from_cf(url, **kwargs):
 
     return results
 
-#Return list of dealer objects
+#Return list of dealer review objects
 def get_dealer_reviews_from_cf(url, dealer_id):
     result = []
     json_result = get_request(url, id=dealer_id)
 
     if json_result:
         reviews = json_result
-        print(analyze_review_sentiments(reviews[0]['review']))
+     
         for review in reviews:
-            #review['sentiment'] = analyze_review_sentiments(review['review'])
+            review['sentiment'] = analyze_review_sentiments(review['review'])
             review_obj = DealerReview(review)
             result.append(review_obj)
             
@@ -60,14 +66,21 @@ def get_dealer_reviews_from_cf(url, dealer_id):
 
 #Analyze sentiment for the review
 def analyze_review_sentiments(dealer_review):
-    
-    url = 'https://api.au-syd.natural-language-understanding.watson.cloud.ibm.com/instances/e622df82-44f8-439c-ba8d-9a3365aea640'
-    params = dict()
-    params["text"] = dealer_review
-    params["version"] = '2022-04-07'
-    params["features"] = ['sentiment']
-    params["return_analyzed_text"] = True
-    params['api_key'] = 'iNkqkgBR2vmKDQQ1Ve-N-283-ltPJbhLgFmJ_EGHUXaB'
-    json_result = get_request(url, **params)
-    return json_result
+
+    authenticator = IAMAuthenticator('iNkqkgBR2vmKDQQ1Ve-N-283-ltPJbhLgFmJ_EGHUXaB')
+    natural_language_understanding = NaturalLanguageUnderstandingV1(version='2022-04-07', authenticator=authenticator)
+    natural_language_understanding.set_service_url('https://api.au-syd.natural-language-understanding.watson.cloud.ibm.com/instances/e622df82-44f8-439c-ba8d-9a3365aea640')
+
+    print(dealer_review)
+    response = natural_language_understanding.analyze(
+    text = dealer_review,
+    return_analyzed_text = True,
+    language = 'en',
+    features=Features(
+        sentiment=SentimentOptions()
+    )).get_result()
+
+    return response['sentiment']['document']['label']
+
+
 
