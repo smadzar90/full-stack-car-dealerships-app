@@ -6,7 +6,7 @@ class CarMake(models.Model):
     description = models.CharField(null=False, max_length=100)
 
     def __str__(self):
-        return self.name + ' ' + self.description
+        return self.name + ', ' + self.description
 
 class CarModel(models.Model):
 
@@ -23,7 +23,7 @@ class CarModel(models.Model):
     date = models.DateField(null=False)
 
     def __str__(self):
-        return self.name + ' ' + self.type + ' ' + self.date
+        return self.name + ', ' + self.type + ', ' + self.date
 
 
 
