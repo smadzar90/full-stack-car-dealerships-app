@@ -56,9 +56,9 @@ def post_review():
     
     # Extract review data from the request JSON
     review_data = request.json
-
+    review_data['id'] = get_highest_id() + 1
     # Validate that the required fields are present in the review data
-    required_fields = ['id', 'name', 'dealership', 'review', 'purchase', 'purchase_date', 'car_make', 'car_model', 'car_year']
+    required_fields = ['name', 'dealership', 'review', 'purchase', 'purchase_date', 'car_make', 'car_model', 'car_year']
     for field in required_fields:
         if field not in review_data:
             abort(400, description=f'Missing required field: {field}')
@@ -67,6 +67,17 @@ def post_review():
     db.create_document(review_data)
 
     return jsonify({"message": "Review posted successfully"}), 201
+
+def get_highest_id():
+    documents = db.all_docs(include_docs=True)
+    highest_id = -1
+
+    for document in documents['rows']:
+        if document['doc']['id'] > highest_id:
+            highest_id = document['doc']['id']
+
+    return highest_id
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
