@@ -67,22 +67,14 @@ def registration_request(request):
     return render(request, 'djangoapp/registration.html', context)
 
 
-
-# Update the `get_dealerships` view to render the index page with a list of dealerships
-# def get_dealerships(request):
-#     context = { 'title': 'This is the title' }
-#     if request.method == "GET":
-#         return render(request, 'djangoapp/index.html', context)
-
 def get_dealerships(request):
     if request.method == "GET":
         url = "http://localhost:3000/dealerships/get"
         # Get dealers from the URL
         dealerships = get_dealers_from_cf(url)
-        # Concat all dealer's short name
-        dealer_names = ' '.join([dealer.short_name for dealer in dealerships])
+        context = { 'title': 'Dealerships', 'dealerships': dealerships }
         # Return a list of dealer short name
-        return HttpResponse(dealer_names)
+        return render(request, 'djangoapp/index.html', context)
 
 def get_dealer_details(request, dealer_id):
     url = "http://localhost:5000/api/get_reviews"
@@ -91,18 +83,23 @@ def get_dealer_details(request, dealer_id):
     
     return HttpResponse(reviews)
 
+def add_review(request, dealer_id):
+    review = dict()
+    review['purchase_date'] = datetime.utcnow().isoformat()
+    review['dealership'] = dealer_id
+    review['review'] = request.POST.get('review')
+    review['name'] = request.POST.get('name')
+    review['purchase'] = request.POST.get('purchase')
+    review['car_make'] = request.POST.get('car_make')
+    review['car_model'] = request.POST.get('car_model')
+    review['car_year'] = request.POST.get('car_year')
+
+    url = "http://localhost:5001/api/post_review"
+
+    response = post_request(url, review)
+    print(response)
+
+    
 
 
-
-
-
-
-
-# Create a `get_dealer_details` view to render the reviews of a dealer
-# def get_dealer_details(request, dealer_id):
-# ...
-
-# Create a `add_review` view to submit a review
-# def add_review(request, dealer_id):
-# ...
 

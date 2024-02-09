@@ -83,4 +83,6 @@ def analyze_review_sentiments(dealer_review):
     return response['sentiment']['document']['label']
 
 
-
+def post_request(url, json_payload):
+    response = request.post(url, json=json_payload)
+    return response

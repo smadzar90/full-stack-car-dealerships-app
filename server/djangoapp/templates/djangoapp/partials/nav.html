@@ -23,14 +23,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active mr-2">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item mr-2">
+                <a class="nav-link" href="{%url 'djangoapp:index' %}">Home</a>
             </li>
             <li class="nav-item mr-2">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="{%url 'djangoapp:about' %}">About</a>
             </li>
             <li class="nav-item mr-2 last-li">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="{%url 'djangoapp:contact' %}">Contact Us</a>
             </li>
         </ul>
         {% if user.is_authenticated %}

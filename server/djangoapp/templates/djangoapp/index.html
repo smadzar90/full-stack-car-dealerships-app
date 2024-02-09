@@ -3,14 +3,24 @@
 <head>
     {% include 'djangoapp/partials/head.html' %}
 </head>
-
-    <body>
-        <nav class="navbar navbar-light bg-light border">
-
-        </nav>
-
-    <!--Add a dealer table here -->
-
-    </body>
+<body>
+    {% include 'djangoapp/partials/nav.html' %}
+</body>
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th data-field="id">ID</th>
+            ...
+        </tr>
+    </thead>
+    <tbody>
+        {% for dealer in dealerships %}
+            <tr>
+                <td>{{dealer.address}}</td>
+                ...
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>    
 
 </html>
