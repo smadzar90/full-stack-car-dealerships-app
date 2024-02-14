@@ -77,11 +77,11 @@ def get_dealerships(request):
         return render(request, 'djangoapp/index.html', context)
 
 def get_dealer_details(request, dealer_id):
-    url = "http://localhost:5000/api/get_reviews"
+    url = "http://localhost:5001/api/get_reviews"
 
     reviews = get_dealer_reviews_from_cf(url, dealer_id)
     
-    return HttpResponse(reviews)
+    return HttpResponse("reviewddddd")
 
 def add_review(request, dealer_id):
     review = dict()
