@@ -15,9 +15,11 @@ def about(request):
      context = { 'title': 'About Us' }
      return render(request, 'djangoapp/about.html', context)
 
+
 def contact(request):
     context = { 'title': 'Contact Us' }
     return render(request, 'djangoapp/contact_us.html', context)
+
 
 def login_request(request):
 
@@ -33,9 +35,11 @@ def login_request(request):
     
     return redirect("djangoapp:about")
 
+
 def logout_request(request):
     logout(request)
     return redirect("djangoapp:about")
+
 
 def registration_request(request):
 
@@ -76,12 +80,23 @@ def get_dealerships(request):
         # Return a list of dealer short name
         return render(request, 'djangoapp/index.html', context)
 
+
 def get_dealer_details(request, dealer_id):
     url = "http://localhost:5001/api/get_reviews"
+    url2 = "http://localhost:3000/dealerships/get?id=" + str(dealer_id)
 
     reviews = get_dealer_reviews_from_cf(url, dealer_id)
-    
-    return HttpResponse("reviewddddd")
+    dealership = get_dealers_from_cf(url2)
+
+    if not dealership: 
+        return HttpResponse("Dealer not found")
+
+    context = { 'title': dealership[0].short_name, 
+                'dealership': dealership[0],
+                'reviews': reviews
+    }
+    return render(request, 'djangoapp/dealer_details.html', context)
+
 
 def add_review(request, dealer_id):
     review = dict()

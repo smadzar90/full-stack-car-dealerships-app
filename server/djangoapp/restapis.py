@@ -29,7 +29,7 @@ def get_request(url, **kwargs):
     return json_data
 
 #Return a list of dealer objects
-def get_dealers_from_cf(url, **kwargs):
+def get_dealers_from_cf(url):
     results = []
     # Call get_request with a URL parameter
     json_result = get_request(url)
@@ -71,7 +71,6 @@ def analyze_review_sentiments(dealer_review):
     natural_language_understanding = NaturalLanguageUnderstandingV1(version='2022-04-07', authenticator=authenticator)
     natural_language_understanding.set_service_url('https://api.au-syd.natural-language-understanding.watson.cloud.ibm.com/instances/e622df82-44f8-439c-ba8d-9a3365aea640')
 
-    print(dealer_review)
     response = natural_language_understanding.analyze(
     text = dealer_review,
     return_analyzed_text = True,
