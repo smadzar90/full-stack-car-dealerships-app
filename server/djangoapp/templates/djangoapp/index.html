@@ -27,6 +27,9 @@
                         <th scope="col">Latitude</th>
                         <th scope="col">Longitude</th>
                         <th scope="col">Shortname</th>
+                        {% if user.is_authenticated%}
+                        <th scope="col">Reviews</th>
+                        {% endif %}
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +46,11 @@
                         <td>{{ dealer.lat }}</td>
                         <td>{{ dealer.long }}</td>
                         <td>{{ dealer.short_name }}</td>
+                        {% if user.is_authenticated%}
+                        <td>
+                        <button type="button" class="btn btn-outline-primary">Review</button>
+                        </td>
+                        {% endif %}
                     </tr>
                     {% endfor %}
                 </tbody>

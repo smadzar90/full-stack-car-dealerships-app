@@ -1,49 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    {% include 'djangoapp/partials/head.html' %}
-
-    <style>
-        img {
-            width:20px;
-            height:20px;
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
+    <head>
+        {% include 'djangoapp/partials/head.html' %}
+        <style>
+            img {
+                width:25px;
+                height:25px;
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
     {% include 'djangoapp/partials/nav.html' %}
     <body>
-        <h2>{{dealership.full_name}}</h2>
-        <h4>{{dealership.address}}, {{dealership.city}} {{dealership.st}}, {{dealership.zip}}</h4>
+        <div class="container text-center mt-5 mb-5 bg-light p-4">
+            <h2>{{dealership.full_name}}</h2>
+            <h6>{{dealership.address}}, {{dealership.city}} {{dealership.st}}, {{dealership.zip}}</h6>
+        </div>
 
         {% if reviews %}
         <div class="container">
-        <div class="row">
-        {% for review in reviews %}
-    <div class="col-sm-4 mb-3">
-        <div class="card">
-            <div class="card-body">
-                <img src="/media/emoji/negative.png" alt="Card image cap">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+            <div class="row">
+            {% for review in reviews %}
+                <div class="col-sm-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="/media/emoji/negative.png" alt="Card image cap">
+                          <h5 class="card-title">{{review.car_make}} - {{review.car_model}}</h5>
+                          <p class="card-text">{{review.review}}</p>
+                        </div>
+                        <div class="card-footer">
+                          <small class="text-muted">Posted by {{review.name}}</small>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
             </div>
         </div>
-    </div>
-    {% endfor %}
-</div>
-</div>
-    {% else %}
-
-    {% endif %}
-
-    
-
-
-    
-
+        {% else %}
+        
+        {% endif %}
     </body>
-
 </html>

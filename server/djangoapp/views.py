@@ -33,7 +33,7 @@ def login_request(request):
         if user is not None:
             login(request, user)
     
-    return redirect("djangoapp:about")
+    return redirect("djangoapp:home")
 
 
 def logout_request(request):
