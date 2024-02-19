@@ -112,7 +112,6 @@ def add_review(request, dealer_id):
     url = "http://localhost:5001/api/post_review"
 
     response = post_request(url, review)
-    print(response)
 
     
 

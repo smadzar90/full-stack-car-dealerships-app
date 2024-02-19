@@ -4,8 +4,8 @@
         {% include 'djangoapp/partials/head.html' %}
         <style>
             img {
-                width:25px;
-                height:25px;
+                width: 25px;
+                height: 25px;
                 margin-bottom: 10px;
             }
         </style>
@@ -18,15 +18,22 @@
         </div>
 
         {% if reviews %}
-        <div class="container">
+        <div class="container mb-3">
+            <button type="button" id="add-review" class="btn btn-outline-secondary mb-5">Add Review</button>
             <div class="row">
             {% for review in reviews %}
-                <div class="col-sm-4 mb-3">
-                    <div class="card">
+                <div class="col-sm-12 col-md-4 mb-4">
+                    <div class="card h-100">
                         <div class="card-body">
+                            {% if review.sentiment == "positive" %}
+                            <img src="/media/emoji/positive.png" alt="Card image cap">
+                            {% elif review.sentiment == "neutral" %}
+                            <img src="/media/emoji/neutral.png" alt="Card image cap">
+                            {% else %}
                             <img src="/media/emoji/negative.png" alt="Card image cap">
-                          <h5 class="card-title">{{review.car_make}} - {{review.car_model}}</h5>
-                          <p class="card-text">{{review.review}}</p>
+                            {% endif %}
+                            <h5 class="card-title">{{review.car_make}} - {{review.car_model}}</h5>
+                            <p class="card-text">{{review.review}}</p>
                         </div>
                         <div class="card-footer">
                           <small class="text-muted">Posted by {{review.name}}</small>
@@ -39,5 +46,11 @@
         {% else %}
         
         {% endif %}
+
+        <script>
+            document.getElementById("add-review").addEventListener("click", function() {
+                window.location.href = '/djangoapp/'
+            });
+        </script>
     </body>
 </html>
