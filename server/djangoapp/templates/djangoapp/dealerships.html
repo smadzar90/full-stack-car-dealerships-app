@@ -48,7 +48,7 @@
                         <td>{{ dealer.short_name }}</td>
                         {% if user.is_authenticated%}
                         <td>
-                        <button type="button" class="btn btn-outline-primary">Review</button>
+                            <a href="/djangoapp/review/{{ dealer.id }}" class="btn btn-outline-primary">Review</a>
                         </td>
                         {% endif %}
                     </tr>
@@ -57,5 +57,9 @@
             </table>
         </div>
     </div>
+
+    <script>
+
+    </script>
 </body>
 </html>

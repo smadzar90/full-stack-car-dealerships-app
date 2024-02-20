@@ -103,19 +103,31 @@ def get_dealer_details(request, dealer_id):
 
 
 def add_review(request, dealer_id):
-    review = dict()
-    review['purchase_date'] = datetime.utcnow().isoformat()
-    review['dealership'] = dealer_id
-    review['review'] = request.POST.get('review')
-    review['name'] = request.POST.get('name')
-    review['purchase'] = request.POST.get('purchase')
-    review['car_make'] = request.POST.get('car_make')
-    review['car_model'] = request.POST.get('car_model')
-    review['car_year'] = request.POST.get('car_year')
 
-    url = "http://localhost:5001/api/post_review"
+    if request.method == 'POST':
+        review = dict()
+        review['purchase_date'] = datetime.utcnow().isoformat()
+        review['dealership'] = dealer_id
+        review['review'] = request.POST.get('review')
+        review['name'] = request.POST.get('name')
+        review['purchase'] = request.POST.get('purchase')
+        review['car_make'] = request.POST.get('car_make')
+        review['car_model'] = request.POST.get('car_model')
+        review['car_year'] = request.POST.get('car_year')
 
-    response = post_request(url, review)
+        url = "http://localhost:5001/api/post_review"
+
+        response = post_request(url, review)
+        print(response)
+
+        return redirect('djangoapp:dealer_details', dealer_id)
+    
+    context = {
+        'title': 'Add Review',
+        'id': dealer_id
+    }
+
+    return render(request, 'djangoapp/add_review.html', context)
 
     
 

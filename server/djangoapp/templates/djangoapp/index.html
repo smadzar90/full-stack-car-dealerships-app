@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
     {% include 'djangoapp/partials/head.html' %}
+    <style>
+        .container {
+            margin-top: 25vh;
+        }
+    </style>
 </head>
 <body>
     {% include 'djangoapp/partials/nav.html' %}
-   this is index
+        <div class="container">
+            <h1 class="display-4">Welcome to Best Cars Dealerships</h1>
+            <p class="lead ml-1">Read what our customers have to say in our reviews</p>
+            <hr class="my-4">
+            <button id="btn" type="button" class="btn btn-outline-primary ml-1">Get Dealerships</button>
+        </div>
+
+        <script>
+            document.getElementById("btn").addEventListener("click", function() {
+                window.location.href = '/djangoapp/dealerships'
+            });
+        </script>
 </body>
 </html>
+

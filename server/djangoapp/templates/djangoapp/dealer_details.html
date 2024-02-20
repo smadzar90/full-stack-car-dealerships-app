@@ -20,7 +20,7 @@
         {% if reviews %}
         <div class="container mb-3">
             {% if user.is_authenticated %}
-            <button type="button" class="add-review btn btn-outline-secondary mb-5">Add Review</button>
+            <a href="/djangoapp/review/{{ dealership.id }}" class="add-review btn btn-outline-secondary mb-5">Add Review</a>
             {% endif %}
             <div class="row">
             {% for review in reviews %}
@@ -46,11 +46,6 @@
             </div>
         </div>
         {% else %}
-        {% if user.is_authenticated %}
-        <div class="container mb-3">
-            <button type="button" class="add-review btn btn-outline-secondary mb-5">Add Review</button>
-        </div>
-        {% endif %}
         {% endif %}
         
         <script>
