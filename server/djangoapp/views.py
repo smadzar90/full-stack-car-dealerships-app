@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import render, redirect
 from .restapis import *
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -10,6 +10,11 @@ import logging
 import json
 
 logger = logging.getLogger(__name__)
+
+def home(request):
+    context = { 'title': 'Home' }
+    return render(request, 'djangoapp/index.html', context)
+
 
 def about(request):
      context = { 'title': 'About Us' }
@@ -33,12 +38,12 @@ def login_request(request):
         if user is not None:
             login(request, user)
     
-    return redirect("djangoapp:home")
+    return redirect("djangoapp:index")
 
 
 def logout_request(request):
     logout(request)
-    return redirect("djangoapp:about")
+    return redirect("djangoapp:index")
 
 
 def registration_request(request):
@@ -61,10 +66,9 @@ def registration_request(request):
             pass
         
         if not user_exist:
-
             user = User.objects.create_user(username=user_name, password=pwd, first_name=first_name, last_name=last_name)
             login(request, user)
-            return redirect('djangoapp:about')
+            return redirect('djangoapp:index')
             
         context['user_exists'] = 'User already exist. Try again!'
         
@@ -78,7 +82,7 @@ def get_dealerships(request):
         dealerships = get_dealers_from_cf(url)
         context = { 'title': 'Dealerships', 'dealerships': dealerships }
         # Return a list of dealer short name
-        return render(request, 'djangoapp/index.html', context)
+        return render(request, 'djangoapp/dealerships.html', context)
 
 
 def get_dealer_details(request, dealer_id):

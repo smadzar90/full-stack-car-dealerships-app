@@ -2,60 +2,9 @@
 <html lang="en">
 <head>
     {% include 'djangoapp/partials/head.html' %}
-    <style>
-        @media (min-width: 1200px) {
-            .container{
-                max-width: 90vw;
-            }
-        }
-    </style>
 </head>
 <body>
     {% include 'djangoapp/partials/nav.html' %}
-    <div class="container mt-5 mb-5">
-        <p><em>Click on the dealarship name to read and add reviews!</em></p>
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover" style="margin-top: 10px;">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">City</th>
-                        <th scope="col">State</th>
-                        <th scope="col">Zipcode</th>
-                        <th scope="col">Latitude</th>
-                        <th scope="col">Longitude</th>
-                        <th scope="col">Shortname</th>
-                        {% if user.is_authenticated%}
-                        <th scope="col">Reviews</th>
-                        {% endif %}
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for dealer in dealerships %}
-                    <tr>
-                        <td>{{ dealer.id }}</td>
-                        <td>
-                            <a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'djangoapp:dealer_details' dealer_id=dealer.id %}">{{ dealer.full_name }}</a>
-                        </td>
-                        <td>{{ dealer.address }}</td>
-                        <td>{{ dealer.city }}</td>
-                        <td>{{ dealer.st }}</td>
-                        <td>{{ dealer.zip }}</td>
-                        <td>{{ dealer.lat }}</td>
-                        <td>{{ dealer.long }}</td>
-                        <td>{{ dealer.short_name }}</td>
-                        {% if user.is_authenticated%}
-                        <td>
-                        <button type="button" class="btn btn-outline-primary">Review</button>
-                        </td>
-                        {% endif %}
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
+   this is index
 </body>
 </html>

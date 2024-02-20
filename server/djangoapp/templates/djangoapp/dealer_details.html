@@ -19,7 +19,9 @@
 
         {% if reviews %}
         <div class="container mb-3">
-            <button type="button" id="add-review" class="btn btn-outline-secondary mb-5">Add Review</button>
+            {% if user.is_authenticated %}
+            <button type="button" class="add-review btn btn-outline-secondary mb-5">Add Review</button>
+            {% endif %}
             <div class="row">
             {% for review in reviews %}
                 <div class="col-sm-12 col-md-4 mb-4">
@@ -44,11 +46,15 @@
             </div>
         </div>
         {% else %}
-        
+        {% if user.is_authenticated %}
+        <div class="container mb-3">
+            <button type="button" class="add-review btn btn-outline-secondary mb-5">Add Review</button>
+        </div>
         {% endif %}
-
+        {% endif %}
+        
         <script>
-            document.getElementById("add-review").addEventListener("click", function() {
+            document.getElementsByClassName("add-review")[0].addEventListener("click", function() {
                 window.location.href = '/djangoapp/'
             });
         </script>
