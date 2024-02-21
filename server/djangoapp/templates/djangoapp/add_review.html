@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
     {% include 'djangoapp/partials/head.html' %}
+    <style>
+        textarea {
+            resize: none;
+        }
+    </style>
 </head>
     <body>
         {% include 'djangoapp/partials/nav.html' %}
@@ -10,9 +15,9 @@
         </div>
         <div class="container review" style="max-width:600px;">
             <h3 class="mb-4">Add Review</h3>
-            <form action="register" method="post">
+            <form action="/djangoapp/review/{{ id }}/{{ name }}" method="post">
                 <div class="form-group">
-                    <label for="car-make">Car make</label>
+                    <label for="first-dropdown">Car make</label>
                     <select class="form-control" id="first-dropdown" onchange="updateSecondDropdown()" name="car_make" required>
                         <option value="" disabled selected>Select car make</option>
                         <option value="audi">Audi</option>
@@ -24,35 +29,34 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="car-model">Car model</label>
+                    <label for="second-dropdown">Car model</label>
                     <select class="form-control" id="second-dropdown" name="car_model" required>
                         <option value="" disabled selected>Select car model</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="car-year">Car year</label>
-                    <input class="form-control" type="number" min="2000" max="2024" step="1" name="car_year" required>
+                    <input id="car-year" class="form-control" type="number" min="2000" max="2024" step="1" name="car_year" required>
                 </div>
                 <div class="form-group form-check">
-                    <input class="form-check-input" type="checkbox" value="1" id="check" onchange="updateDate()" checked>
+                    <input class="form-check-input" name="purchase" type="checkbox" value="1" id="check" onchange="updateDate()" checked>
                     <label class="form-check-label" for="check">
                         Purchased
                     </label>
                 </div>
                 <div class="form-group">
-                    <label for="purchase_date">Purchase date</label>
+                    <label for="purchaseD">Purchase date</label>
                     <input id="purchaseD" class="form-control" type="date" name="purchase_date">
                 </div>
                 <div class="form-group">
                     <label for="review">Your review:</label>
-                    <textarea id="review" class="form-control"></textarea>
+                    <textarea rows="4" id="review" class="form-control" name="review"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary mt-3 mb-5">Submit</button>
             </form>
         </div>
 
         <script>
-
             function updateDate() {
                 var purchased = document.getElementById("check");
                 var date = document.getElementById("purchaseD");
