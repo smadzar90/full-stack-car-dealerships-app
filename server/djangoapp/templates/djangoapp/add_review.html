@@ -13,7 +13,7 @@
             <form action="register" method="post">
                 <div class="form-group">
                     <label for="car-make">Car make</label>
-                    <select class="form-control" id="first-dropdown" onchange="updateSecondDropdown()" name="car-make" required>
+                    <select class="form-control" id="first-dropdown" onchange="updateSecondDropdown()" name="car_make" required>
                         <option value="" disabled selected>Select car make</option>
                         <option value="audi">Audi</option>
                         <option value="bmw">BMW</option>
@@ -25,19 +25,48 @@
                 </div>
                 <div class="form-group">
                     <label for="car-model">Car model</label>
-                    <select class="form-control" id="second-dropdown" name="car-model" required>
+                    <select class="form-control" id="second-dropdown" name="car_model" required>
                         <option value="" disabled selected>Select car model</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="car-year">Car year</label>
-                    <input class="form-control" type="number" min="2000" max="2024" step="1" name="car-year" required>
+                    <input class="form-control" type="number" min="2000" max="2024" step="1" name="car_year" required>
+                </div>
+                <div class="form-group form-check">
+                    <input class="form-check-input" type="checkbox" value="1" id="check" onchange="updateDate()" checked>
+                    <label class="form-check-label" for="check">
+                        Purchased
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="purchase_date">Purchase date</label>
+                    <input id="purchaseD" class="form-control" type="date" name="purchase_date">
+                </div>
+                <div class="form-group">
+                    <label for="review">Your review:</label>
+                    <textarea id="review" class="form-control"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary mt-3 mb-5">Submit</button>
             </form>
         </div>
 
         <script>
+
+            function updateDate() {
+                var purchased = document.getElementById("check");
+                var date = document.getElementById("purchaseD");
+
+                if(purchased.checked) {
+                    date.disabled = false;
+                    date.required = true;
+                }
+                else {
+                    date.disabled = true;
+                    date.required = false;
+                }
+            }
+
             function updateSecondDropdown() {
                 var selected = document.getElementById("first-dropdown").value;
                 var secondDropdown = document.getElementById("second-dropdown");

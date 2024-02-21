@@ -11,6 +11,9 @@ import json
 
 logger = logging.getLogger(__name__)
 
+def redirect_to_home(request):
+    return redirect("djangoapp:index")
+
 def home(request):
     context = { 'title': 'Home' }
     return render(request, 'djangoapp/index.html', context)
@@ -106,7 +109,7 @@ def add_review(request, dealer_id, dealer_name):
 
     if request.method == 'POST':
         review = dict()
-        review['purchase_date'] = datetime.utcnow().isoformat()
+        review['purchase_date'] = request.POST.get('purchase_date')
         review['dealership'] = dealer_id
         review['review'] = request.POST.get('review')
         review['name'] = request.POST.get('name')
