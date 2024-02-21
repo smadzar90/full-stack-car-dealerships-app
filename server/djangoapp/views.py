@@ -102,7 +102,7 @@ def get_dealer_details(request, dealer_id):
     return render(request, 'djangoapp/dealer_details.html', context)
 
 
-def add_review(request, dealer_id):
+def add_review(request, dealer_id, dealer_name):
 
     if request.method == 'POST':
         review = dict()
@@ -124,7 +124,8 @@ def add_review(request, dealer_id):
     
     context = {
         'title': 'Add Review',
-        'id': dealer_id
+        'id': dealer_id,
+        'name': dealer_name
     }
 
     return render(request, 'djangoapp/add_review.html', context)
