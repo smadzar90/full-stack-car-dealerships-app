@@ -20,12 +20,12 @@
                     <label for="first-dropdown">Car make</label>
                     <select class="form-control" id="first-dropdown" onchange="updateSecondDropdown()" name="car_make" required>
                         <option value="" disabled selected>Select car make</option>
-                        <option value="audi">Audi</option>
-                        <option value="bmw">BMW</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="honda">Honda</option>
-                        <option value="wolkswagen">Wolkswagen</option>
-                        <option value="tesla">Tesla</option>
+                        <option value="Audi">Audi</option>
+                        <option value="Bmw">BMW</option>
+                        <option value="Mercedes">Mercedes</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Wolkswagen">Wolkswagen</option>
+                        <option value="Tesla">Tesla</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -77,30 +77,30 @@
                 clearDropdown(secondDropdown);
 
                 switch(selected) {
-                    case "audi":
+                    case "Audi":
                         const audiModels = ["A3", "A4", "A5", "A8", "Q3", "Q5", "TT"];
                         addOptions(secondDropdown, audiModels)
                         break;
-                    case "mercedes":
+                    case "Mercedes":
                         const mercedesModels = ["A-Class", "C-Class", "E-Class", "S-Class",
                                         "GLA", "GLC", "GLE"];
                         addOptions(secondDropdown, mercedesModels)
                         break;
-                    case "bmw":
+                    case "Bmw":
                         const bmwModels = ["1 Series", "2 Series", "3 Series", "4 Series",
                                         "5 Series", "X3", "X5"];
                         addOptions(secondDropdown, bmwModels)
                         break;
-                    case "tesla":
+                    case "Tesla":
                         const teslaModels = ["Model S", "Model 3", "Model X", "Model Y", "Roadster", 
                                         "Cybertruck", "Semi"];
                         addOptions(secondDropdown, teslaModels)
                         break;
-                    case "honda":
+                    case "Honda":
                         const hondaModels = ["Accord", "Civic", "CR-V", "HR-V", "Pilot"]
                         addOptions(secondDropdown, hondaModels)
                         break;
-                    case "wolkswagen":
+                    case "Wolkswagen":
                         const wolkswagenModels = ["Golf", "Passat", "Jetta", "Tiguan", "Atlas", "Arteon"];
                         addOptions(secondDropdown, wolkswagenModels)
                         break;
@@ -112,7 +112,7 @@
             function addOptions(menu, models) {
                 for(const model of models) {
                     option = document.createElement('option');
-                    option.value = model.toLowerCase();
+                    option.value = model;
                     option.innerHTML = model;
                     menu.appendChild(option);
                 }

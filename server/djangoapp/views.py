@@ -130,6 +130,15 @@ def add_review(request, dealer_id, dealer_name):
         print(response)
         return redirect('djangoapp:dealer_details', dealer_id)
     
+    url = "http://localhost:3000/dealerships/get?id=" + str(dealer_id)
+    dealership = get_dealers_from_cf(url)
+
+    if not dealership:
+        return HttpResponse("Dealer not found")
+    
+    if not dealership[0].full_name == dealer_name:
+         return HttpResponse("Dealer not found")
+
     context = {
         'title': 'Add Review',
         'id': dealer_id,
