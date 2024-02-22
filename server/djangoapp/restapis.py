@@ -22,7 +22,7 @@ def get_request(url, **kwargs):
         # If any error occurs
         print("Network exception occurred")
         return None
-
+    
     status_code = response.status_code
     print("With status {} ".format(status_code))
     json_data = json.loads(response.text)
@@ -80,8 +80,3 @@ def analyze_review_sentiments(dealer_review):
     )).get_result()
 
     return response['sentiment']['document']['label']
-
-
-def post_request(url, json_payload):
-    response = request.post(url, json=json_payload)
-    return response

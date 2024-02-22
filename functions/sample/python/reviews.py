@@ -14,7 +14,6 @@ session = client.session()
 print('Databases:', client.all_dbs())
 
 db = client['reviews']
-
 app = Flask(__name__)
 
 @app.route('/api/get_reviews', methods=['GET'])
@@ -68,9 +67,10 @@ def post_review():
 
     return jsonify({"message": "Review posted successfully"}), 201
 
+# Get the highest id from the reviews
 def get_highest_id():
     documents = db.all_docs(include_docs=True)
-    highest_id = -1
+    highest_id = 0
 
     for document in documents['rows']:
         if document['doc']['id'] > highest_id:

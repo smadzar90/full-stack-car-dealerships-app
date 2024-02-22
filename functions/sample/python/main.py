@@ -1,23 +1,9 @@
-"""IBM Cloud Function that gets all reviews for a dealership
-
-Returns:
-    List: List of reviews for the given dealership
-"""
 from cloudant.client import Cloudant
 from cloudant.error import CloudantException
 import requests
 
 
 def main(param_dict):
-    """Main Function
-
-    Args:
-        param_dict (Dict): input paramater
-
-    Returns:
-        _type_: _description_ TODO
-    """
-
     try:
         client = Cloudant.iam(
             account_name=param_dict["7422baae-6c44-4421-b623-3f102f8da609-bluemix"],

@@ -113,15 +113,21 @@ def add_review(request, dealer_id, dealer_name):
         review['dealership'] = dealer_id
         review['review'] = request.POST.get('review')
         review['name'] = request.user.get_full_name()
-        review['purchase'] = request.POST.get('purchase')
-        print(review['purchase'])
+        purchase = request.POST.get('purchase')
+
+        if purchase:
+            review['purchase'] = True
+            review['purchase_date'] = request.POST.get('purchase_date')
+        else:
+            review['purchase'] = False
+        
         review['car_make'] = request.POST.get('car_make')
         review['car_model'] = request.POST.get('car_model')
         review['car_year'] = request.POST.get('car_year')
 
-        print("fds", request.user.get_full_name())
         url = "http://localhost:5001/api/post_review"
-
+        response = requests.post(url, json=review)
+        print(response)
         return redirect('djangoapp:dealer_details', dealer_id)
     
     context = {
