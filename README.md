@@ -1,4 +1,4 @@
-# Car Dealerships App
+# Full Stack Car Dealerships App
 
 ## 📝  Background
 
