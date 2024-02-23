@@ -16,8 +16,6 @@
             <h2>{{dealership.full_name}}</h2>
             <h6>{{dealership.address}}, {{dealership.city}} {{dealership.st}}, {{dealership.zip}}</h6>
         </div>
-
-       
         <div class="container mb-3">
             {% if user.is_authenticated %}
             <a href="/djangoapp/review/{{ dealership.id }}/{{dealership.full_name}}" class="add-review btn btn-outline-secondary mb-5">Add Review</a>

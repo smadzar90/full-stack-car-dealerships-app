@@ -7,6 +7,7 @@ from ibm_watson import NaturalLanguageUnderstandingV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from ibm_watson.natural_language_understanding_v1 import Features, SentimentOptions
 
+
 #Send a get request to a specified url
 def get_request(url, **kwargs):
     print("GET from {} ".format(url))
@@ -27,6 +28,7 @@ def get_request(url, **kwargs):
     print("With status {} ".format(status_code))
     json_data = json.loads(response.text)
     return json_data
+
 
 #Return a list of dealer objects
 def get_dealers_from_cf(url):
@@ -49,6 +51,7 @@ def get_dealers_from_cf(url):
 
     return results
 
+
 #Return list of dealer review objects
 def get_dealer_reviews_from_cf(url, dealer_id):
     result = []
@@ -63,6 +66,7 @@ def get_dealer_reviews_from_cf(url, dealer_id):
             result.append(review_obj)
             
     return result
+
 
 #Analyze sentiment for the review
 def analyze_review_sentiments(dealer_review):

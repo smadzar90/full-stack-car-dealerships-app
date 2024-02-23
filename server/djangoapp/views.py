@@ -1,34 +1,35 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from .restapis import *
 from django.contrib.auth import login, logout, authenticate
-from django.contrib import messages
-from datetime import datetime
-import logging
-import json
 
-logger = logging.getLogger(__name__)
 
+# Redirect to the home page
 def redirect_to_home(request):
     return redirect("djangoapp:index")
 
+
+# Render a home page
 def home(request):
     context = { 'title': 'Home' }
     return render(request, 'djangoapp/index.html', context)
 
 
+# Render a about page
 def about(request):
      context = { 'title': 'About Us' }
      return render(request, 'djangoapp/about.html', context)
 
 
+# Render a contact page
 def contact(request):
     context = { 'title': 'Contact Us' }
     return render(request, 'djangoapp/contact_us.html', context)
 
 
+# Authenticate and login user, then redirect to the home page
 def login_request(request):
 
     if request.method == 'POST':
@@ -44,11 +45,15 @@ def login_request(request):
     return redirect("djangoapp:index")
 
 
+# Logour user
 def logout_request(request):
     logout(request)
     return redirect("djangoapp:index")
 
 
+# Register the user
+# if user-name doesn't exist --> register and redirect to the home page
+# if user-name exists --> render the page again
 def registration_request(request):
 
     context = { 'title': 'Registration' }
@@ -78,6 +83,8 @@ def registration_request(request):
     return render(request, 'djangoapp/registration.html', context)
 
 
+# Send get request to NodeJS app that will retreive dealerships
+# Render a dealership page with list of dealership objects retrieved from the database
 def get_dealerships(request):
     if request.method == "GET":
         url = "http://localhost:3000/dealerships/get"
@@ -88,6 +95,8 @@ def get_dealerships(request):
         return render(request, 'djangoapp/dealerships.html', context)
 
 
+# Send get request to Flask app that will retreive reviews by dealer_id
+# Render a dealer details page with reviews retreived from the database
 def get_dealer_details(request, dealer_id):
     url = "http://localhost:5001/api/get_reviews"
     url2 = "http://localhost:3000/dealerships/get?id=" + str(dealer_id)
@@ -97,14 +106,18 @@ def get_dealer_details(request, dealer_id):
 
     if not dealership: 
         return HttpResponse("Dealer not found")
-
+    
+    sorted_reviews = sorted(reviews, key=lambda x: x.id)
     context = { 'title': dealership[0].short_name, 
                 'dealership': dealership[0],
-                'reviews': reviews
+                'reviews': sorted_reviews
     }
+
     return render(request, 'djangoapp/dealer_details.html', context)
 
 
+# GET --> Render a review page
+# POST --> Send post request to the Flask app that will add review to the database
 def add_review(request, dealer_id, dealer_name):
 
     if request.method == 'POST':
@@ -127,7 +140,6 @@ def add_review(request, dealer_id, dealer_name):
 
         url = "http://localhost:5001/api/post_review"
         response = requests.post(url, json=review)
-        print(response)
         return redirect('djangoapp:dealer_details', dealer_id)
     
     url = "http://localhost:3000/dealerships/get?id=" + str(dealer_id)
