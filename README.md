@@ -8,12 +8,12 @@ This application represents the penultimate milestone in the Full-Stack Software
 
 ## 📖  Description 
 
-The application functions as a platform for reviewing Best Cars dealerships, allowing logged-in users to submit reviews for specific dealership products. It utilizes a combination of backend frameworks including Flask and NodeJS to interact with the database, with Django serving as the main application. Communication and data transfer between these frameworks are facilitated through RestAPI. Flask and Node servers retrieve data from the IBM Cloudant database and transmit it to the Django server, which in turn utilizes the data for templates. On the frontend side, HTML, JavaScript, and Bootstrap are employed to create a user-friendly interface.
+The application functions as a platform for reviewing Best Cars dealerships, allowing logged-in users to submit reviews for specific dealership products. It utilizes a combination of backend frameworks including Flask and Express to interact with the database, with Django serving as the main application. Communication and data transfer between these frameworks are facilitated through RestAPI. Flask and Express servers retrieve data from the IBM Cloudant database and transmit it to the Django server, which in turn utilizes the data for templates. On the frontend side, HTML, JavaScript, and Bootstrap are employed to create a user-friendly interface.
 
 
 ## 💻  Technologies
 
-- 🚀 Node.js
+- 🚀 Express
 - 🐍 Flask
 - ⚙️ Django
 - ☁️ IBM Cloudant
@@ -39,7 +39,7 @@ The application functions as a platform for reviewing Best Cars dealerships, all
         python3 manage.py runserver
         ```
 
-2. **Set Up Node.js Server**
+2. **Set Up Express Server**
     - Open a new terminal window.
     - Navigate to the nodejs directory:
       
@@ -51,7 +51,7 @@ The application functions as a platform for reviewing Best Cars dealerships, all
         ```
         npm install express
         ```
-    - Run the Node.js server to fetch dealership data:
+    - Run the Express server to fetch dealership data:
       
         ```
         node get-dealership.js
