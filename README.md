@@ -28,40 +28,45 @@ The application functions as a platform for reviewing Best Cars dealerships, all
     - Open a terminal window.
     - Navigate to the server directory of the project:
       
-        ```bash
+        ```
         cd full-stack-car-dealerships-app/server
         ```
     - Run the following commands to set up the Django server:
-        ```bash
+      
+        ```
         python3 manage.py makemigrations
         python3 manage.py migrate
         python3 manage.py runserver
         ```
-    - This will start the Django server locally.
 
-2. **Set Up Node.js Server for Dealership Data:**
+2. **Set Up Node.js Server**
     - Open a new terminal window.
-    - Navigate to the Node.js functions directory:
-        ```bash
+    - Navigate to the nodejs directory:
+      
+        ```
         cd full-stack-car-dealerships-app/functions/sample/nodejs
         ```
     - Install the Express.js framework:
-        ```bash
+      
+        ```
         npm install express
         ```
     - Run the Node.js server to fetch dealership data:
-        ```bash
+      
+        ```
         node get-dealership.js
         ```
-
-3. **Run Python Script for Reviews:**
-    - Open another new terminal window.
-    - Navigate to the Python functions directory:
-        ```bash
+        
+3. **Set Up Flask Server**
+    - Open a new terminal window.
+    - Navigate to the python functions directory:
+      
+        ```
         cd full-stack-car-dealerships-app/functions/sample/python
         ```
-    - Run the Python script to simulate reviews:
-        ```bash
+    - Run the Flask server to simulate reviews:
+      
+        ```
         python reviews.py
         ```
 
