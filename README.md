@@ -1,8 +1,10 @@
 # Car Dealerships App
 
+
 ## 📝  Background
 
 This application represents the penultimate milestone in the Full-Stack Software Developer certification program offered by IBM. Built on a core framework provided by the IBM team, which initially lacked functionality and predefined templates, this project was transformed into a comprehensive platform. The skills learned and practiced in 10 courses by the IBM team are presented in this project, which consists of several programming languages and a backend frameworks. The application serves as a platform for dealership users offering them to engage with dealership-related details and reviews. Its backbone relies heavily on a RestAPI for seamless communication and integration, ensuring efficient data management and retrieval. This project stands as a testament to the knowledge, expertise, and dedication fostered within the IBM certification program, exemplifying the practical application of acquired skills in real-world scenarios.
+
 
 ## 📖  Description 
 
@@ -19,23 +21,58 @@ The application functions as a platform for reviewing Best Cars dealerships, all
 - 🚀 JavaScript
 - 🅱️ Bootstrap
 
+
 ## 🔧  Installation
 
-1. `cd full-stack-car-dealerships-app/server`
-2. `python3 manage.py makemigrations
-    python3 manage.py migrate
-    python3 manage.py runserver`
-3. Open new terminal window
-4. `cd full-stack-car-dealerships-app/functions/sample/nodejs`
-5. `npm install express
-    node get-dealership.js`
-6. Open new terminal window
-7. `cd full-stack-car-dealerships-app/functions/sample/python`
-8. `python reviews.py`
-9. Access the app on: `http://localhost:8000`
+1. **Set Up Django Server:**
+    - Open a terminal window.
+    - Navigate to the server directory of the project:
+        ```bash
+        cd full-stack-car-dealerships-app/server
+        ```
+    - Run the following commands to set up the Django server:
+        ```bash
+        python3 manage.py makemigrations
+        python3 manage.py migrate
+        python3 manage.py runserver
+        ```
+    - This will start the Django server locally.
+
+2. **Set Up Node.js Server for Dealership Data:**
+    - Open a new terminal window.
+    - Navigate to the Node.js functions directory:
+        ```bash
+        cd full-stack-car-dealerships-app/functions/sample/nodejs
+        ```
+    - Install the Express.js framework:
+        ```bash
+        npm install express
+        ```
+    - Run the Node.js server to fetch dealership data:
+        ```bash
+        node get-dealership.js
+        ```
+
+3. **Run Python Script for Reviews:**
+    - Open another new terminal window.
+    - Navigate to the Python functions directory:
+        ```bash
+        cd full-stack-car-dealerships-app/functions/sample/python
+        ```
+    - Run the Python script to simulate reviews:
+        ```bash
+        python reviews.py
+        ```
+
+4. **Access the Application:**
+    - Open a web browser.
+    - Access the application at: [http://localhost:8000](http://localhost:8000)
+    - This will load the full-stack car dealerships app in your browser.
+
 
 ## 👤 Author
 - Stipan Madzar
+
 
 ## 📧  Contact
 - ✉️ Email: [smadzar90@student.se.edu](mailto:smadzar90@student.se.edu)
