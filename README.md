@@ -31,7 +31,7 @@ The application functions as a platform for reviewing Best Cars dealerships, all
         ```
         cd full-stack-car-dealerships-app/server
         ```
-    - Run the following commands to set up the Django server:
+    - Run the following commands to set up and run the Django server:
       
         ```
         python3 manage.py makemigrations
