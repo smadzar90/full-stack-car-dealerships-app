@@ -22,11 +22,12 @@ The application functions as a platform for reviewing Best Cars dealerships, all
 - 🅱️ Bootstrap
 
 
-## 🔧  Installation
+## 🔧  Installation and Setup
 
 1. **Set Up Django Server:**
     - Open a terminal window.
     - Navigate to the server directory of the project:
+      
         ```bash
         cd full-stack-car-dealerships-app/server
         ```
