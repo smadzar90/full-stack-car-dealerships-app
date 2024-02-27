@@ -73,7 +73,6 @@ The application functions as a platform for reviewing Best Cars dealerships, all
 4. **Access the Application:**
     - Open a web browser.
     - Access the application at: [http://localhost:8000](http://localhost:8000)
-    - This will load the full-stack car dealerships app in your browser.
 
 
 ## 👤 Author
