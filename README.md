@@ -19,6 +19,30 @@ The application functions as a platform for reviewing Best Cars dealerships, all
 - 🚀 JavaScript
 - 🅱️ Bootstrap
 
+## 🔧  Installation
+
+1. `cd full-stack-car-dealerships-app/server`
+2. `python3 manage.py makemigrations
+    python3 manage.py migrate
+    python3 manage.py runserver`
+3. Open new terminal window
+4. `cd full-stack-car-dealerships-app/functions/sample/nodejs`
+5. `npm install express
+    node get-dealership.js`
+6. Open new terminal window
+7. `cd full-stack-car-dealerships-app/functions/sample/python`
+8. `python reviews.py`
+9. Access the app on: `http://localhost:8000`
+
+## 👤 Author
+- Stipan Madzar
+
+## 📧  Contact
+- ✉️ Email: [smadzar90@student.se.edu](mailto:smadzar90@student.se.edu)
+- 🐙 GitHub: [smadzar90](https://github.com/smadzar90)
+- 💼 LinkedIn: [Stipan Madzar](https://www.linkedin.com/in/stipan-madzar-b6b857225/)
+
+
 
 
 
