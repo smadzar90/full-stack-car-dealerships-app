@@ -24,7 +24,7 @@ The application functions as a platform for reviewing Best Cars dealerships, all
 
 ## 🔧  Installation and Setup
 
-1. **Set Up Django Server:**
+1. **Set Up Django Server**
     - Open a terminal window.
     - Navigate to the server directory of the project:
       
