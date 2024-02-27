@@ -59,7 +59,7 @@ The application functions as a platform for reviewing Best Cars dealerships, all
         
 3. **Set Up Flask Server**
     - Open a new terminal window.
-    - Navigate to the python functions directory:
+    - Navigate to the python directory:
       
         ```
         cd full-stack-car-dealerships-app/functions/sample/python
