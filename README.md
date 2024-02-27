@@ -6,3 +6,9 @@ This application represents the penultimate milestone in the Full-Stack Software
 
 ## 📖  Description 
 
+The application functions as a platform for reviewing Best Cars dealerships, allowing logged-in users to submit reviews for specific dealership products. It utilizes a combination of backend frameworks including Flask and NodeJS to interact with the database, with Django serving as the main application. Communication and data transfer between these frameworks are facilitated through RestAPI. Flask and Node servers retrieve data from the IBM Cloudant database and transmit it to the Django server, which in turn utilizes the data for templates. On the frontend, HTML, JavaScript, and Bootstrap are employed to create a user-friendly interface.
+
+
+
+
+
